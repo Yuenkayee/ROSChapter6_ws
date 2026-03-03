@@ -17,5 +17,8 @@
 	<xacro:imu_xacro xyz="0 0 0.02" />
 	<xacro:laser_xacro xyz="0 0 0.10" />
 	<xacro:camera_xacro xyz="0.10 0 0.075" />
+    <!-- Gazebo 插件 -->
+    <xacro:include filename="$(find yuen_bot)/urdf/fishbot/plugins/gazebo_control_plugin.xacro"/>
+    <xacro:gazebo_control_plugin/>
 
 </robot>
