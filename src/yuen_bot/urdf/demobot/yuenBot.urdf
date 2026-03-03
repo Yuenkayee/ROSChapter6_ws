@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<robot name="sex_slave_LiXinlan">
+    <!--机器人的实体部分-->
+    <link name="base_link">
+        <!--部件的外观描述-->
+        <visual>
+            <!--坐标信息-->
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <!-- 几何形状信息 -->
+            <geometry>
+                <cylinder length="0.12" radius="0.15"/>
+            </geometry>
+            <!-- 材质颜色 -->
+            <material name="white">
+                <color rgba="1.0 1.0 1.0 0.5"/>
+            </material>
+        </visual>
+    </link>
+    <!-- 机器人的IMU部件，传感器 -->
+    <link name="IMU_link">
+        <!--部件的外观描述-->
+        <visual>
+            <!--坐标信息-->
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <!-- 几何形状信息 -->
+            <geometry>
+                <box size="0.02 0.02 0.02"/>
+            </geometry>
+            <!-- 材质颜色 -->
+            <material name="black">
+                <color rgba="0.0 0.0 0.0 0.5"/>
+            </material>
+        </visual>
+    </link>
+    <!-- 机器人关节，用于组合各种部件 -->
+    <joint name="imu_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="IMU_link"/>
+        <origin xyz="0.0 0.0 0.03" rpy="0.0 0.0 0.0"/>
+    </joint>
+</robot>
