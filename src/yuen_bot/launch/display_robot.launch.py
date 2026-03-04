@@ -31,7 +31,7 @@ def generate_launch_description():
     package='rviz2',
     executable='rviz2',
     # 下面运行此前手动调好的 rviz 配置文件
-    arguments=['-d', default_rviz_path] # arguements 的作用是在终端的指令行当中加内容，区别于 parameters
+    arguments=['-d', default_rviz_path] # arguements 的作用是在终端的命令行当中加内容，区别于 parameters
     )
 
     return launch.LaunchDescription([
