@@ -2,6 +2,8 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
     <xacro:macro name="gazebo_control_plugin">
         <gazebo>
+        <!-- 下面定义插件名称（节点名称）以及插件依赖 -->
+        <!-- 运行之后可以生成一个新的节点， 这个节点可以订阅指令速度话题，并且发布机器人的坐标变换和里程话题-->
             <plugin name='diff_drive' filename='libgazebo_ros_diff_drive.so'>
                 <ros>
                     <namespace>/</namespace>
