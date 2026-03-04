@@ -22,5 +22,7 @@
     <xacro:gazebo_control_plugin/>
     <xacro:include filename="$(find fishbot_description)/urdf/fishbot/plugins/gazebo_sensor_plugin.xacro" />
     <xacro:gazebo_sensor_plugin />
-
+    <!-- <xacro:gazebo_control_plugin /> -->
+    <xacro:include filename="$(find fishbot_description)/urdf/fishbot/fishbot.ros2_control.xacro" />
+    <xacro:fishbot_ros2_control />
 </robot>
