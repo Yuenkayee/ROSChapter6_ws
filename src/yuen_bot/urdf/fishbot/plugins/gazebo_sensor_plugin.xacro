@@ -9,6 +9,7 @@
                     <remapping>~/out:=scan</remapping>  <!-- 在ros 子标签中，将插件节点话题～/out 映射为/scan -->
                 </ros>
                 <output_type>sensor_msgs/LaserScan</output_type>
+                <!-- to set name of the frame -->
                 <frame_name>laser_link</frame_name>
             </plugin>
             <always_on>true</always_on>
@@ -47,8 +48,9 @@
             <plugin name="imu_plugin" filename="libgazebo_ros_imu_sensor.so">
                 <ros>
                     <namespace>/</namespace>
-                <remapping>~/out:=imu</remapping>
+                    <remapping>~/out:=imu</remapping>
                 </ros>
+                <!-- do not use initial_orientation_as_reference -->
                 <initial_orientation_as_reference>false</initial_orientation_as_reference>
             </plugin>
             <update_rate>100</update_rate>
