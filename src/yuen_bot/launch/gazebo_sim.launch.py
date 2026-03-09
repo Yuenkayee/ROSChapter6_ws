@@ -64,7 +64,6 @@ def generate_launch_description():
         )
     )
 
-    launch
     # 事件动作，当加载机器人结束后执行
     regesiter_event_load_joint = launch.actions.RegisterEventHandler(
         event_handler=launch.event_handlers.OnProcessExit(
