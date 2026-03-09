@@ -40,25 +40,31 @@ def generate_launch_description():
         arguments=['-topic', '/robot_description',
         '-entity', robot_name_in_model, ])
     
-        # 加载并激活 fishbot_joint_state_broadcaster 控制器
+    # 加载并激活 fishbot_joint_state_broadcaster 控制器
     load_joint_state_controller = launch.actions.ExecuteProcess(
         cmd=['ros2', 'control', 'load_controller', '--set-state', 'active',
         'fishbot_joint_state_broadcaster'],
         output='screen'
         )
 
-    # 加载并激活 fishbot_effort_controller 控制器
-    load_fishbot_effort_controller = launch.actions.ExecuteProcess(
-    cmd=['ros2', 'control', 'load_controller', '--set-state', 'active',
-    'fishbot_effort_controller'], output='screen' )
+    # # 加载并激活 fishbot_effort_controller 控制器
+    # load_fishbot_effort_controller = launch.actions.ExecuteProcess(
+    # cmd=['ros2', 'control', 'load_controller', '--set-state', 'active',
+    # 'fishbot_effort_controller'], output='screen' )
 
-    regesiter_event_effort_controller = launch.actions.RegisterEventHandler(
+    # 加载并激活 fishbot_diff_drive_controller 控制器
+    load_fishbot_diff_drive_controller = launch.actions.ExecuteProcess(
+    cmd=['ros2', 'control', 'load_controller', '--set-state', 'active',
+    'fishbot_diff_drive_controller'], output='screen' )
+
+    regesiter_event_diff_drive_controller = launch.actions.RegisterEventHandler(
         event_handler=launch.event_handlers.OnProcessExit(
         target_action=load_joint_state_controller,
-        on_exit=[load_fishbot_effort_controller],
+        on_exit=[load_fishbot_diff_drive_controller],
         )
     )
 
+    launch
     # 事件动作，当加载机器人结束后执行
     regesiter_event_load_joint = launch.actions.RegisterEventHandler(
         event_handler=launch.event_handlers.OnProcessExit(
@@ -68,10 +74,10 @@ def generate_launch_description():
     )
 
     return launch.LaunchDescription([
-    action_declare_arg_mode_path,
-    robot_state_publisher_node,
-    launch_gazebo,
-    spawn_entity_node,
-    regesiter_event_load_joint,
-    regesiter_event_effort_controller
+        action_declare_arg_mode_path,
+        robot_state_publisher_node,
+        launch_gazebo,
+        spawn_entity_node,
+        regesiter_event_load_joint,
+        regesiter_event_diff_drive_controller
     ])

@@ -33,18 +33,18 @@
             <state_interface name="velocity" />
             <state_interface name="effort" />
         </joint>
-
     </ros2_control>
-    <gazebo>
+    
+    <!-- <gazebo>
         <plugin filename="libgazebo_ros2_control.so" name="gazebo_ros2_control">
-            <parameters>$(find fishbot_description)/config/fishbot_ros2_controller.yaml</parameters>
+            <parameters>$(find yuen_bot)/config/fishbot_ros2_controller.yaml</parameters>
         </plugin>
-    </gazebo>
+    </gazebo> -->
     <gazebo>
         <plugin filename="libgazebo_ros2_control.so" name="gazebo_ros2_control">
             <robot_param>robot_description</robot_param>
             <robot_param_node>robot_state_publisher</robot_param_node>
-            <parmeters>$(find fishbot_description)/config/fishbot_ros2_controller.yaml</parameters>
+            <parmeters>$(find yuen_bot)/config/fishbot_ros2_controller.yaml</parameters>
             <ros>
                 <rempping>/fishbot_diff_drive_controller/cmd_vel_unstamped:=/cmd_vel</remapping>
                 <remapping>/fishbot_diff_drive_controller/odom:=/odom</remapping>
