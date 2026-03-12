@@ -25,6 +25,7 @@ setup(
     entry_points={
         'console_scripts': [
             "init_robot_pose=yuen_app.init_robot_pose:main"
+            "get_robot_pose=yuen_app.get_robot_pose:main"
         ],
     },
 )
