@@ -1,0 +1,11 @@
+{
+    "clang-format.executable": "/usr/bin/clang-format",
+    "[cpp]": {
+        "editor.defaultFormatter": "xaver.clang-format"
+    },
+    "[c]": {
+        "editor.defaultFormatter": "xaver.clang-format"
+    },
+    "editor.formatOnSave": true,
+    "cmake.sourceDirectory": "/home/ubuntu/ROSLearning/ROSChapter6_ws/src/"
+}
