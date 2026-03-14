@@ -12,11 +12,16 @@ using NavigationActionGoalHandle = rclcpp_action::ClientGoalHandle<
     NavigationAction>; // 定义导航动作目标句柄类型
 
 class NavToPoseClient : public rclcpp::Node {
+private:
+  NavigationActionClient::SharedPtr action_client_;
+
 public:
   NavToPoseClient() : Node("nav_to_pose_client") {
     // 创建导航动作客户端
     action_client_ = rclcpp_action::create_client<NavigationAction>(
         this, "navigate_to_pose");
+    // 执行动作指令
+    sendGoal();
   }
 
   void sendGoal() {
@@ -58,14 +63,12 @@ public:
     // 发送导航目标点
     action_client_->async_send_goal(goal_msg, send_goal_options);
   }
-
-  NavigationActionClient::SharedPtr action_client_;
 };
 
 int main(int argc, char **argv) {
   rclcpp::init(argc, argv);
   auto node = std::make_shared<NavToPoseClient>();
-  node->sendGoal();
+  // node->sendGoal();
   rclcpp::spin(node);
   rclcpp::shutdown();
   return 0;
