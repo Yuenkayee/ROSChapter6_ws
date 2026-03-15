@@ -12,8 +12,10 @@ find_package(nav2_msgs REQUIRED)
 find_package(rclcpp_action REQUIRED)
 
 add_executable(goal_to_pose src/goal_to_pose.cpp)
+add_executable(way_points_follow src/way_points_follow.cpp)
 
 ament_target_dependencies(goal_to_pose rclcpp nav2_msgs rclcpp_action)
+ament_target_dependencies(way_points_follow rclcpp rclcpp_action nav2_msgs)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
@@ -27,7 +29,7 @@ if(BUILD_TESTING)
   ament_lint_auto_find_test_dependencies()
 endif()
 
-install(TARGETS goal_to_pose
+install(TARGETS goal_to_pose way_points_follow
 DESTINATION lib/${PROJECT_NAME})
 
 ament_package()
