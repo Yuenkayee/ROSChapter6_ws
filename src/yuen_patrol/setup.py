@@ -27,7 +27,7 @@ setup(
     entry_points={
         'console_scripts': [
             'patrol_node=yuen_patrol.patrol_node:main',
-            'speaker=yuen_patrol.speaker:main'
+            # 'speaker=yuen_patrol.speaker:main'
         ],
     },
 )

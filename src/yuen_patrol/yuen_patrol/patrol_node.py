@@ -155,20 +155,20 @@ class PatrolNode(BasicNavigator):
 def main():
     rclpy.init()
     patrol = PatrolNode()
-    patrol.speach_text(text='正在初始化位置')
+    # patrol.speach_text(text='正在初始化位置')
     patrol.init_robot_pose()
-    patrol.speach_text(text='位置初始化完成')
+    # patrol.speach_text(text='位置初始化完成')
 
     while rclpy.ok():
         for point in patrol.get_target_points():
             x, y, yaw = point[0], point[1], point[2]
             # 导航到目标点
             target_pose = patrol.get_pose_by_xyyaw(x, y, yaw)
-            patrol.speach_text(text=f'准备前往目标点{x},{y}')
+            # patrol.speach_text(text=f'准备前往目标点{x},{y}')
             patrol.nav_to_pose(target_pose)
-            patrol.speach_text(text=f"已到达目标点{x},{y},准备记录图像")
+            # patrol.speach_text(text=f"已到达目标点{x},{y},准备记录图像")
             patrol.record_image()
-            patrol.speach_text(text=f"图像记录完成")
+            # patrol.speach_text(text=f"图像记录完成")
     rclpy.shutdown()
 
 if __name__ == '__main__':

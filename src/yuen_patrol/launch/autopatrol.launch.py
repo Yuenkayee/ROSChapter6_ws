@@ -17,12 +17,12 @@ def generate_launch_description():
         executable='patrol_node',
         parameters=[patrol_config_path]
     )
-    action_node_patrol_client = launch_ros.actions.Node(
-        package='yuen_patrol',
-        executable='speaker',
-    )
+    # action_node_patrol_client = launch_ros.actions.Node(
+    #     package='yuen_patrol',
+    #     executable='speaker',
+    # )
 
     return launch.LaunchDescription([
         action_node_bot_control,
-        action_node_patrol_client,
+        # action_node_patrol_client,
     ])
