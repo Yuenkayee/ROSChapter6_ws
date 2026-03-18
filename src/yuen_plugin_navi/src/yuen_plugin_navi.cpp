@@ -13,11 +13,14 @@ void yuenPlanner::configure(
     std::shared_ptr<tf2_ros::Buffer> tf,
     std::shared_ptr<nav2_costmap_2d::Costmap2DROS> costmap_ros) {
   tf_ = tf;
-  node_ = parent.lock();
+  node_ = parent.lock(); // 考虑到事实上 yuenPlanner 并非 rclcpp::Node
+                         // 的子类，因此不能继承诸多 Node的方法，这里通过 config
+                         // 函数传入一个 Node 的虚指针引用 parent， 再调用
+                         // parent.lock() 方法，获取一个 Node 的共享指针
   name_ = name;
   costmap_ = costmap_ros->getCostmap();
   global_frame_ = costmap_ros->getGlobalFrameID();
-  // 参数初始化
+  // 参数初始化，对成员变量 interpolation_resolution_ 进行赋值
   nav2_util::declare_parameter_if_not_declared(
       node_, name_ + ".interpolation_resolution", rclcpp::ParameterValue(0.1));
   node_->get_parameter(name_ + ".interpolation_resolution",

@@ -1,10 +1,10 @@
 #pragma once
 #include "geometry_msgs/msg/point.hpp"
 #include "geometry_msgs/msg/pose_stamped.hpp"
-#include "nav2_core/global_planner.hpp"
+#include "nav2_core/global_planner.hpp" // 基类
 #include "nav2_costmap_2d/costmap_2d_ros.hpp"
-#include "nav2_util/lifecycle_node.hpp"
-#include "nav2_util/robot_utils.hpp"
+#include "nav2_util/lifecycle_node.hpp" // rclcpp 的子类
+#include "nav2_util/robot_utils.hpp"    // 常用工具
 #include "nav_msgs/msg/path.hpp"
 #include "pluginlib/class_list_macros.hpp" // 用于插件导出的头文件
 #include "rclcpp/rclcpp.hpp"
@@ -40,7 +40,7 @@ private:
   // 全局代价地图
   nav2_costmap_2d::Costmap2D *costmap_;
   // 全局代价地图的坐标系
-  std::string global_frame_, name_;
+  std::string global_frame_, name_; // 插件名称
   // 插值分辨率
   double interpolation_resolution_;
 };

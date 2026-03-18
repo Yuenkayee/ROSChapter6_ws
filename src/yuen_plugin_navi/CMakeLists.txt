@@ -27,7 +27,7 @@ install(TARGETS ${library_name}
 # 安装头文件到指定目录
 install(DIRECTORY include/
   DESTINATION include/ )
-# 导出插件描述文件
+# 导出插件描述文件，注意一定要写插件的基类所在的命名空间，不能写子类的命名空间或者自定义的插件名
 pluginlib_export_plugin_description_file(nav2_core planner_plugin.xml)
 
 if(BUILD_TESTING)
