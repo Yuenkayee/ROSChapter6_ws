@@ -1,0 +1,5 @@
+<library path="yuen_plugin_navi"> <!--库的路径，或者库的名称 -->
+	<class name="yuen_plugin_navi/yuenPlanner" type="yuen_plugin_navi::yuenPlanner" base_class_type="nav2_core::GlobalPlanner">
+	  <description>a custom plugin to generate customed path</description>
+	</class>
+</library>
