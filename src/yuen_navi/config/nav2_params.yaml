@@ -179,7 +179,7 @@ controller_server:
       # RotateToGoal.scale: 32.0
       # RotateToGoal.slowing_factor: 5.0
       # RotateToGoal.lookahead_time: -1.0
-      plugin: "nav2_custom_controller::CustomController"
+      plugin: "nav2_custom_controller/CustomController"
       max_linear_speed: 0.1
       max_angular_speed: 1.0
 
