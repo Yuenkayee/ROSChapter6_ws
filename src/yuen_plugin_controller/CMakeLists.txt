@@ -1,0 +1,42 @@
+cmake_minimum_required(VERSION 3.8)
+project(yuen_plugin_controller)
+
+if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+  add_compile_options(-Wall -Wextra -Wpedantic)
+endif()
+
+# find dependencies
+find_package(ament_cmake REQUIRED)
+find_package(pluginlib REQUIRED)
+find_package(nav2_core REQUIRED)
+
+if(BUILD_TESTING)
+  find_package(ament_lint_auto REQUIRED)
+  # the following line skips the linter which checks for copyrights
+  # comment the line when a copyright and license is added to all source files
+  set(ament_cmake_copyright_FOUND TRUE)
+  # the following line skips cpplint (only works in a git repo)
+  # comment the line when this package is in a git repo and when
+  # a copyright and license is added to all source files
+  set(ament_cmake_cpplint_FOUND TRUE)
+  ament_lint_auto_find_test_dependencies()
+endif()
+
+include_directories(include)
+set(library_name ${PROJECT_NAME})
+add_library(${library_name} SHARED src/yuen_plugin_controller.cpp)
+ament_target_dependencies(${library_name} nav2_core pluginlib)
+
+# 安装库文件到指定目录
+install(TARGETS ${library_name}
+  ARCHIVE DESTINATION lib
+  LIBRARY DESTINATION lib
+  RUNTIME DESTINATION lib/${PROJECT_NAME}
+)
+# 安装头文件到指定目录
+install(DIRECTORY include/
+  DESTINATION include/ )
+# 导出插件描述文件，注意一定要写插件的基类所在的命名空间，不能写子类的命名空间或者自定义的插件名
+pluginlib_export_plugin_description_file(nav2_core controller_plugin.xml)
+
+ament_package()
